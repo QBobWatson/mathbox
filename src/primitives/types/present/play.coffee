@@ -7,10 +7,12 @@ class Play extends Track
     super
     @skew = null
     @start = null
+    @done = false
 
   reset: (go = true) ->
     @skew = if go then 0 else null
     @start = null
+    @done = false
 
   make: () ->
     super
@@ -21,6 +23,8 @@ class Play extends Track
       return @reset()      if trigger? and e.index == trigger
       return @reset(false) if trigger? and e.index == 0
     @reset() if !@props.trigger or !@_inherit('slide')?
+
+    @_listen 'root', 'root.post',   @post
 
     # Find parent clock
     parentClock = @_inherit 'clock'
@@ -43,6 +47,7 @@ class Play extends Track
         offset = offset % (to - from) if @props.loop
 
         @playhead = Math.min to, from + offset
+
       else
         @playhead = 0
 
@@ -50,6 +55,10 @@ class Play extends Track
 
   update: () ->
     super
+
+  post: () ->
+      if @skew? && @playhead == @props.to && !@props.loop && !@done
+        @node.trigger type: "play.done"
 
   change: (changed, touched, init) ->
     return @rebuild() if changed['trigger.trigger'] or changed['play.realtime']

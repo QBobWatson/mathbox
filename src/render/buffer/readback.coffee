@@ -187,7 +187,7 @@ class Readback extends Renderable
     @byteMemo ?.render camera
 
   post: () ->
-    @renderer.setRenderTarget @byteMemo.target.write
+    @renderer.setRenderTarget @byteMemo.target.reads[0]
     @gl.readPixels 0, 0, @rect.w, @rect.h, gl.RGBA, gl.UNSIGNED_BYTE, @bytes
 
   readFloat: (n) -> @floatMemo?.read n

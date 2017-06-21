@@ -100,7 +100,7 @@ class API
 
   "off": () ->
     args = arguments
-    @_targets.map (x) -> x.on.apply x, args
+    @_targets.map (x) -> x.off.apply x, args
     @
 
   toString: () ->

@@ -122,6 +122,8 @@ apply = (el, last, node, parent, index) ->
               apply el, last.rendered, node, parent, index
 
               comp.didUpdate? prevProps, prevState
+          else
+            el.rendered = last.rendered
 
           return
 

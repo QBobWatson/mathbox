@@ -106,6 +106,12 @@ Traits =
     detail:            Types.int(1)
     crossed:           Types.bool(false)
 
+  rawtex:
+    width:             Types.nullable(Types.positive(Types.int(1), true))
+    height:            Types.nullable(Types.positive(Types.int(1), true))
+    image:             Types.nullable(Types.object())
+    texture:           Types.nullable(Types.object())
+
   data:
     data:              Types.nullable(Types.data())
     expr:              Types.nullable(Types.emitter())

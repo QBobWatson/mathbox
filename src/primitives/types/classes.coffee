@@ -31,6 +31,7 @@ Classes =
   voxel:             require './data/voxel'
   volume:            require './data/volume'
   scale:             require './data/scale'
+  image:             require './data/image'
 
   html:              require './overlay/html'
   dom:               require './overlay/dom'

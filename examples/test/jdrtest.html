@@ -236,33 +236,37 @@
         .resample({
           shader: null,
           size: 'relative',
-          height: 1/8
+          height: 1/8,
+          width: 1/8,
         })
         // Draw partial subsampled wireframe
-        .slice({ height: [0, 5] })
-        .line({
+        //.slice({ height: [0, 5] })
+        .surface({
           color: 0x4FFF6F,
           width: 2,
-          zBias: 3,
+            zBias: 3,
+          fill: false,
+          lineX: true,
+          lineY: true,
         })
       .end()
-      .group()
-        .transpose({
-          order: 'yx',
-        })
-        .resample({
-          shader: null,
-          size: 'relative',
-          height: 1/8
-        })
-        // Draw partial subsampled wireframe
-        .slice({ width: [0, 33], height: [0, 5] })
-        .line({
-          color: 0x4FFF6F,
-          width: 2,
-          zBias: 3,
-        })
-      .end()
+  /* .group()
+   *   .transpose({
+   *     order: 'yx',
+   *   })
+   *   .resample({
+   *     shader: null,
+   *     size: 'relative',
+   *     height: 1/8
+   *   })
+   *   // Draw partial subsampled wireframe
+   *   .slice({ width: [0, 33], height: [0, 5] })
+   *   .line({
+   *     color: 0x4FFF6F,
+   *     width: 2,
+   *     zBias: 3,
+   *   })
+   * .end()*/
     .end()
 
   </script>

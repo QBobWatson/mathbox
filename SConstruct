@@ -3,7 +3,7 @@
 import fnmatch
 import os
 
-env = Environment()
+env = Environment(ENV=os.environ)
 
 def gulp_build(target, source, env, for_signature=None):
     actions = []
